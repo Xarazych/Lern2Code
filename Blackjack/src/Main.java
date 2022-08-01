@@ -11,6 +11,9 @@ public class Main {
 
         Stack<String> deck = new Stack<>();
         String[] faces = {"A", "J", "Q", "K"};
+        int players;
+        Stack<String> playerHand = new Stack<>();
+        Stack<String> dealerHand = new Stack<>();
 
         for(int i = 2; i <= 10; i++){
             String value = String.valueOf(i);
@@ -41,5 +44,17 @@ public class Main {
         Collections.shuffle(deck);
 
         System.out.println(deck);
+
+        System.out.println("The first card in your hand is: " + deck.peek());
+        playerHand.add(deck.pop());
+        System.out.println("The first card in the dealer's hand is: " + deck.peek());
+        dealerHand.add(deck.pop());
+        System.out.println("The second card in your hand is: " + deck.peek());
+        playerHand.add(deck.pop());
+        System.out.println("The second card in the dealer's hand is unknown.");
+        dealerHand.add(deck.pop());
+        System.out.println("Your current hand: " + playerHand);
+        System.out.println("Hit (h) or Stand (s)?");
+
     }
 }
