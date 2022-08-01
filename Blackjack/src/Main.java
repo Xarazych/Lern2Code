@@ -10,10 +10,12 @@ public class Main {
          available list.**/
 
         Stack<String> deck = new Stack<>();
-        String[] faces = {"A", "J", "Q", "K"};
-        int players;
         Stack<String> playerHand = new Stack<>();
         Stack<String> dealerHand = new Stack<>();
+        String[] faces = {"A", "J", "Q", "K"};
+        String cardRank;
+        int playerPts = 0;
+        int dealerPts = 0;
 
         for(int i = 2; i <= 10; i++){
             String value = String.valueOf(i);
@@ -40,10 +42,10 @@ public class Main {
         }
 
         System.out.println(deck);
-
+        System.out.println("Shuffling...");
         Collections.shuffle(deck);
 
-        System.out.println(deck);
+        //System.out.println(deck);
 
         System.out.println("The first card in your hand is: " + deck.peek());
         playerHand.add(deck.pop());
@@ -56,5 +58,45 @@ public class Main {
         System.out.println("Your current hand: " + playerHand);
         System.out.println("Hit (h) or Stand (s)?");
 
+        for (int i = 0; i < playerHand.size(); i++){
+           cardRank = playerHand.get(i).toString();
+           char rank = cardRank.charAt(0);
+           int ptValue;
+
+            if (rank == 'A'){
+                ptValue = 11;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '2'){
+                ptValue = 2;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '3'){
+                ptValue = 3;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '4'){
+                ptValue = 4;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '5'){
+                ptValue = 5;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '6'){
+                ptValue = 6;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '7'){
+                ptValue = 7;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '8'){
+                ptValue = 8;
+                //System.out.println("the card value is: " + ptValue);
+            }else if (rank == '9'){
+                ptValue = 9;
+                //System.out.println("the card value is: " + ptValue);
+            }else{
+                ptValue = 10;
+                //System.out.println("the card value is: " + ptValue);
+            }
+            playerPts = playerPts + ptValue;
+        }
+        System.out.println("Your hand total is: " + playerPts);
     }
 }
+
