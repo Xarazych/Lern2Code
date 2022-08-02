@@ -1,11 +1,12 @@
 import java.util.Collections;
 import java.util.Stack;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         //System.out.println("Hello world!");
         /**Create list of all available cards in a deck, pull two random cards for each player without duplication, assign values for each card drawn.
-        Add more cards (values) to player totals, player with highest score <= 21 pts is winner. >= 22 pts is instant loss. Dealer draws another card
+         Add more cards (values) to player totals, player with highest score <= 21 pts is winner. >= 22 pts is instant loss. Dealer draws another card
          when their score is <= 16. After number of cards left in deck is <= 20 at end of round, deck is reshuffled and all cards are added back to
          available list.**/
 
@@ -16,6 +17,7 @@ public class Main {
         String cardRank;
         int playerPts = 0;
         int dealerPts = 0;
+        Scanner hitStand = new Scanner(System.in);
 
         for(int i = 2; i <= 10; i++){
             String value = String.valueOf(i);
@@ -56,12 +58,11 @@ public class Main {
         System.out.println("The second card in the dealer's hand is unknown.");
         dealerHand.add(deck.pop());
         System.out.println("Your current hand: " + playerHand);
-        System.out.println("Hit (h) or Stand (s)?");
 
         for (int i = 0; i < playerHand.size(); i++){
-           cardRank = playerHand.get(i).toString();
-           char rank = cardRank.charAt(0);
-           int ptValue;
+            cardRank = playerHand.get(i).toString();
+            char rank = cardRank.charAt(0);
+            int ptValue;
 
             if (rank == 'A'){
                 ptValue = 11;
@@ -97,6 +98,9 @@ public class Main {
             playerPts = playerPts + ptValue;
         }
         System.out.println("Your hand total is: " + playerPts);
+        System.out.println("Hit (h) or Stand (s)?");
+        if (hitStand.next().equals("h")){
+            System.out.println("Hit.");
+        }
     }
 }
-
